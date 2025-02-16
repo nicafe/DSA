@@ -1,0 +1,35 @@
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+.env/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Python package build files
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Coverage reports
+*.coverage
+.coverage.*
+nosetests.xml
+test-*.xml
