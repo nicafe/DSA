@@ -1,3 +1,2 @@
 # DSA
-DSA practice
-(edit by Felix)
+DSA practice (Henry, Nicolas, Felix)
