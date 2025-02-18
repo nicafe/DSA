@@ -13,22 +13,6 @@ def quicksort(arr):
     return quicksort(less) + [pivot] + quicksort(greater)
 
 
-
-# quicksort() is clearer, but quicksort2() performs better.
-def quicksort2(arr):
-    if len(arr) < 2:
-        return arr
-    
-    pivot = arr[0]
-    less = [x for x in arr[1:] if x < pivot]
-    greater = [x for x in arr[1:] if x >= pivot]
-    
-    res = quicksort(less)
-    res.append(pivot)
-    res.extend(greater)
-    return res
-    
-
 def merge_sort(arr):
     if len(arr) < 2:
         return arr
@@ -48,22 +32,47 @@ def merge_sort(arr):
     if pointer1 < len(arr1):
         res.extend(arr1[pointer1:])
         # the same as res += arr1[pointer1:]
-        # better than res = res + arr1[pointer1:]
+        # performs slightly better than res = res + arr1[pointer1:]
     else:
         res.extend(arr2[pointer2:])
     return res
 
 
+def counting_sort(arr, k):
+    count = [0] * (k + 1)
+    
+    for num in arr:
+        count[num] += 1
+    
+    res = []
+    for i in range(len(count)):
+        if count[i]:
+            res.extend([i] * count[i])
+    return res
+
 
 # print(quicksort([5, 3, 6, 2, 10, 3]))
-# print(quicksort2([5, 3, 6, 2, 10, 3]))
 # print(merge_sort([5, 3, 6, 2, 10, 3]))
+# print(counting_sort([5, 3, 6, 2, 10, 3], 10))
 
-arr1 = [randint(1, 10000) for x in range(10000)]
+k = 100000
+arr1 = [randint(0, k) for x in range(k)]
 arr2 = list(arr1)
+arr3 = list(arr1)
+arr4 = list(arr1)
+
 start = time()
 quicksort(arr1)
-print(time() - start)
+print('Quiick:', time() - start)
+
 start = time()
-quicksort2(arr2)
-print(time() - start)
+merge_sort(arr2)
+print('Merge:', time() - start)
+
+start = time()
+counting_sort(arr3, k)
+print('Counting:', time() - start)
+
+start = time()
+sorted(arr4)
+print('Builtin:', time() - start)

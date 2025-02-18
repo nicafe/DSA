@@ -82,12 +82,15 @@ def bubble_sort2(arr):
 arr1 = [randint(1, 10000) for x in range(10000)]
 arr2 = list(arr1)
 arr3 = list(arr1)
+
 start = time()
-selection_sort1(arr1)
+selection_sort2(arr1)
 print(time() - start)
+
 start = time()
-selection_sort2(arr2)
+insertion_sort(arr2)
 print(time() - start)
+
 start = time()
-selection_sort3(arr3)
+bubble_sort(arr3)
 print(time() - start)
