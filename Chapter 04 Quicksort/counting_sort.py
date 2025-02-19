@@ -12,7 +12,7 @@ def counting_sort_stable(arr):
         count[i] += count[i - 1]
 
     output = [0] * len(arr)
-    # Loop from back to front to maintain the stability.
+    # Loop reversely to maintain the stability.
     for num in reversed(arr):
         output[count[num - min_val] - 1] = num
         count[num - min_val] -= 1

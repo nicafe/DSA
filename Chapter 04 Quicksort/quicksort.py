@@ -31,8 +31,8 @@ def merge_sort(arr):
             pointer2 += 1
     if pointer1 < len(arr1):
         res.extend(arr1[pointer1:])
-        # the same as res += arr1[pointer1:]
-        # performs slightly better than res = res + arr1[pointer1:]
+        # list1.extend(list2) is the same as list1 += list2,
+        # performs slightly better than list1 = list1 + list2.
     else:
         res.extend(arr2[pointer2:])
     return res
