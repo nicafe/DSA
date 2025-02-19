@@ -63,14 +63,10 @@ def quick_sort_zero(arr):
     if len(arr) <= 1:
         return arr
     pivot = arr[0]
-    arr_left = []
-    arr_right = []
-    for i in arr[1:]:
-        if i < pivot:
-            arr_left.append(i)
-        elif i >= pivot:
-            arr_right.append(i)
-    return quick_sort_zero(arr_left) + [pivot] + quick_sort_zero(arr_right)
+    arr_left = [x for x in arr if x < pivot]
+    arr_middle = [x for x in arr if x == pivot]
+    arr_right = [x for x in arr if x > pivot]
+    return quick_sort_zero(arr_left) + arr_middle + quick_sort_zero(arr_right)
 
 def quick_sort(arr):
     if len(arr) <= 1:
@@ -83,23 +79,24 @@ def quick_sort(arr):
 
 # --- Testing ---
 
-l = 10000
-random_array = [random.randint(0, l - 1) for _ in range(l)]
-ordered_array = list(range(l))
+if __name__ == "__main__":
+    l = 10000
+    random_array = [random.randint(0, l - 1) for _ in range(l)]
+    ordered_array = list(range(l))
 
-print("--- Random Array ---\n")
-test_algorithm(selection_sort, random_array)
-test_algorithm(insertion_sort, random_array)
-test_algorithm(merge_sort, random_array)
-test_algorithm(quick_sort_zero, random_array)
-test_algorithm(quick_sort, random_array)
+    print("--- Random Array ---\n")
+    test_algorithm(selection_sort, random_array)
+    test_algorithm(insertion_sort, random_array)
+    test_algorithm(merge_sort, random_array)
+    test_algorithm(quick_sort_zero, random_array)
+    test_algorithm(quick_sort, random_array)
 
-print("--- Ordered Array ---\n")
-test_algorithm(selection_sort, ordered_array)
-test_algorithm(insertion_sort, ordered_array)
-test_algorithm(merge_sort, ordered_array)
-# test_algorithm(quick_sort_zero, ordered_array)
-test_algorithm(quick_sort, ordered_array)
+    print("--- Ordered Array ---\n")
+    test_algorithm(selection_sort, ordered_array)
+    test_algorithm(insertion_sort, ordered_array)
+    test_algorithm(merge_sort, ordered_array)
+    # test_algorithm(quick_sort_zero, ordered_array)
+    test_algorithm(quick_sort, ordered_array)
 
-# print("Validity:", test_sorted(random_array) == False)
+    # print("Validity:", test_sorted(random_array) == False)
 
