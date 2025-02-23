@@ -34,20 +34,19 @@ def build_huffman_tree(char_freq):
     return huffman_nodes[0]
 
 
-def build_huffman_codes(node, current_code, huffman_codes):
+def build_huffman_codes(node, current_code='', huffman_codes={}):
     if node.char is not None:
         huffman_codes[node.char] = current_code
         return
 
     build_huffman_codes(node.left, current_code + "0", huffman_codes)
     build_huffman_codes(node.right, current_code + "1", huffman_codes)
+    
+    return huffman_codes
 
 
 char_freq = {'A': 0.1, 'B': 0.05, 'C': 0.3, 'D': 0.2, 'E': 0.15, 'F': 0.15, 'G': 0.03, 'H': 0.02}
 
 root = build_huffman_tree(char_freq)
-huffman_codes = {}
-build_huffman_codes(root, '', huffman_codes)
+huffman_codes = build_huffman_codes(root)
 print(huffman_codes)
-
-
