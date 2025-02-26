@@ -38,9 +38,15 @@ while copied_graph:
             res[neighbor] = (new_cost, lowest_cost_node)
     copied_graph.pop(lowest_cost_node)
 
-items = sorted(res.items(), key=lambda x: x[1][0])
-i = list(res.keys()).index(target)
-for item in items[:i]:
-    print(f'{item[0]} → ', end='')
-    
-print(items[i][0])
+
+def print_path(res, target='end', entry=True):
+    parent = res[target][1]
+    if parent is None:
+        print(f'The shortest path: {target}', end='')
+    else:
+        print_path(res, parent, False)
+        print(f' -> {target}', end='')
+    if entry:
+        print()
+        
+        
