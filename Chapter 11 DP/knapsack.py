@@ -42,5 +42,6 @@ items2 = [
     ]
 
 dp, selected = knapsack(items1, 4)
-print(dp)
+for row in dp:
+    print(row)
 print(selected)

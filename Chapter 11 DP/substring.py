@@ -11,8 +11,7 @@ def longest_common_substring(str1, str2):
                 if dp[i][j] > max_length:
                     max_length = dp[i][j]
                     end_index = i
-            else:
-                dp[i][j] = 0
+    
     # Extract the longest common substring.
     return str1[end_index - max_length:end_index]
 
@@ -40,4 +39,4 @@ def longest_common_substring_optimized(str1, str2):
 
 str1 = 'abcdef'
 str2 = 'zbcdf'
-print(longest_common_substring_optimized(str1, str2))
+print(longest_common_substring(str1, str2))
