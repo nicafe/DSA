@@ -13,4 +13,5 @@ def longest_common_substring(word1, word2):
                     index = i
     return word1[index - res:index], res
 
+
 print(longest_common_substring('fish', 'hish'))
